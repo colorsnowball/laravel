@@ -11,13 +11,18 @@
          @method('PUT')
          @csrf
          <label class="block" for="title">Title</label>
-         <input class="border-2 border-gray-800 w-full" type="text" name="title" id="title" value="{{$taskVal -> title}}">
-
+         <input class="border-2 border-gray-800 w-full" type="text" name="title" id="title" value="{{ old('title')?old('title'):$taskVal -> title}}" required>
+          @error('title')
+           {{$message}}
+          @enderror
          <label class="block" for="body">Body</label>
-         <textarea class="border-2 border-gray-800 w-full"  name="body" id="body" cols="30" rows="10">{{$taskVal -> body}}</textarea>
+         <textarea class="border-2 border-gray-800 w-full"  name="body" id="body" cols="30" rows="10" required>{{old('body')?old('body'):$taskVal -> body}}</textarea>
          <br>
          <button  class="bg-blue-100 text-white px-4 py-2 float-right">submit</button>
      </form>
+
+
+
  </div>
 @endsection
 
