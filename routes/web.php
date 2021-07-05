@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index');
+Route::get('/board','HomeController@show');
+
+Route::get('/projects','ProjectController@index');
+Route::get('/tasks','TaskController@index');
+Route::get('/tasks/create','TaskController@create');
+Route::post('/tasks','TaskController@store');
+Route::get('/tasks/{id}','TaskController@show');
+Route::get('/tasks/{id}/edit','TaskController@edit');
+Route::put('/tasks/{id}','TaskController@update');
+Route::DELETE('/tasks/{id}','TaskController@destroy');
+
